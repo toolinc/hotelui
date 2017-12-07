@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from "material-ui/Button";
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux'
+import {BrowserRouter, Route} from 'react-router-dom'
+import '../index.css';
+import registerServiceWorker from '../registerServiceWorker';
+import Home from './Home';
+import Login from './Login';
+import SignUp from './SignUp';
+import React, {Component} from 'react';
+
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button raised color="primary">
-          Hello World
-        </Button>
-      </div>
-    );
-  }
+    render() {
+        return (
+
+            <BrowserRouter>
+                <div>
+                    <Route exact path="/" component={Home}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/signup" component={SignUp}/>
+                </div>
+            </BrowserRouter>
+
+        )
+    }
 }
 
 export default App;
