@@ -1,4 +1,4 @@
-import {GET_HOTELS,ADD_HOTEL} from '../constants/index'
+import {GET_HOTELS,ADD_HOTEL} from '../constants/constants'
 
 export default function(state = {}, action) {
     switch (action.type) {
