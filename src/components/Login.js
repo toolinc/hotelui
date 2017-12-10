@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import serializeForm from 'form-serialize';
+import {login} from "../actions/actions"
+import { connect } from 'react-redux';
 
 class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const values = serializeForm(e.target, {hash: true})
         console.log(values);
+        this.props.login(values);
 
     }
     render() {
         return (
             <div id='container'>
-                <img type='image/svg' className='ninja animated rubberBand' src='./../assets/hotel3.svg'/>
+                <img type='image/svg' className='ninja animated rubberBand' src='./../assets/hotel3.svg' alt=""/>
                 <p>Welcome to</p>
                 <h1>HOTEL<span className='black'>.FINDER</span></h1>
                 <p id='tagline'>Login</p>
@@ -36,6 +39,16 @@ class Login extends Component {
     }
 }
 
-export default Login;
+function mapStateToProps({user}) {
+    return {
+        user
+    }
+}
+
+export default connect(mapStateToProps, {
+    login
+})(Login)
+
+// export default Login;
 
 

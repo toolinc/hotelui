@@ -61,3 +61,12 @@ body {
   border: none;
   outline: 0;
 }
+
+header {
+  /*max-height: 150px;*/
+  border-bottom-color: lightcoral;
+}
+
+header.MuiAppBar-colorPrimary-9{
+  background-color: #006767;
+}

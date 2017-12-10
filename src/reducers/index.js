@@ -1,11 +1,15 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import create from './Create'
+import hotels from './HotelReducer'
+import reviews from './ReviewsReducer'
+import attractions from './AttractionsReducer'
 
 const rootReducer = combineReducers({
     router: routerReducer,
-    create: create,
+    hotels: hotels,
+    reviews: reviews,
+    attractions: attractions,
 })
   
 export default rootReducer

@@ -1,7 +1,11 @@
 const api = "http://localhost:7050"
 
-export const login = (user,pass) =>
-    fetch(`${api}/hotelInfo`)
+
+
+export const login = (data) =>
+    fetch(`${api}/login`, {method: 'POST' ,
+        body: JSON.stringify(data)
+    })
         .then(res => res.json())
         .then(data => data)
         .catch(function (error) {
