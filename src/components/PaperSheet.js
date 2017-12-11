@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+// import { withStyles } from 'material-ui/styles';
+import {connect} from 'react-redux';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
 import FavoriteIcon from 'material-ui-icons/Favorite';
 import LocationOnIcon from 'material-ui-icons/LocationOn';
+import {fetchReviews, orderByDate, orderByRating} from "../actions/actions";
+
 
 const styles = theme => ({
     root: theme.mixins.gutters({
@@ -18,11 +21,10 @@ const styles = theme => ({
 
 function PaperSheet(props) {
     const { classes, hotel } = props;
-    console.log("paper id "+hotel.hotelId)
 
     return (
         <div>
-            <Paper className={classes.root} elevation={4}>
+            <Paper  elevation={4}>
                 <Typography type="headline" component="h3">
                     {hotel.name}
                 </Typography>
@@ -35,7 +37,7 @@ function PaperSheet(props) {
 
                 <BottomNavigation
                     showLabels
-                    className={classes.root}
+
 
                 >
                     <BottomNavigationButton onClick={function(event) {window.location = '/reviews?id=' + hotel.hotelId}} label="Favorites" icon={<FavoriteIcon />} />
@@ -51,4 +53,16 @@ PaperSheet.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(PaperSheet);
+
+function mapStateToProps({reviews, hotels}) {
+    return {
+        reviews,
+        hotels
+    }
+}
+
+export default connect(mapStateToProps, {
+    fetchReviews,
+})(PaperSheet)
+
+// export default withStyles(styles)(PaperSheet);

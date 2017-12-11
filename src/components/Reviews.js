@@ -12,7 +12,6 @@ class Reviews extends Component {
     componentDidMount() {
         let hotelId = this.props.location.search;
         hotelId = hotelId.toLowerCase().split('=')[1];
-        console.log("hotelId " + hotelId);
         this.props.fetchReviews(hotelId);
 
     };
@@ -21,6 +20,17 @@ class Reviews extends Component {
         query: '',
         rating: false,
         date: false,
+        currentPage: 1,
+        todosPerPage: 3
+    }
+
+    handleClick(event) {
+        console.log("click Page");
+        console.log(event);
+        console.log(this.state);
+        this.setState({
+            currentPage: Number(event)
+        });
     }
 
     updateQuery = (query) => {
@@ -39,15 +49,37 @@ class Reviews extends Component {
 
     render() {
         const {reviews} = this.props;
-        const {query} = this.state
+        const {query,currentPage, todosPerPage} = this.state
         let reviewsArray = reviews[0];
+        // Logic for displaying page numbers
+        const pageNumbers = [];
+        let renderPageNumbers = [];
+
 
         let showingReviews
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i')
             showingReviews = reviewsArray.filter((reviewArray) => match.test(reviewArray.title))
-        } else {
-            showingReviews = reviewsArray
+        } else if(reviewsArray && reviewsArray.length > 0) {
+                const indexOfLastTodo = currentPage * todosPerPage;
+                const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+                showingReviews = reviewsArray.slice(indexOfFirstTodo, indexOfLastTodo);
+
+                for (let i = 1; i <= Math.ceil(reviewsArray.length / todosPerPage); i++) {
+                    pageNumbers.push(i);
+                }
+                // noinspection JSAnnotator
+                renderPageNumbers = pageNumbers.map(number => {
+                    return (
+                        <li
+                            key={number}
+                            id={number}
+                            onClick={(event) => this.handleClick(event.target.id)}
+                        >
+                            {number}
+                        </li>
+                    );
+                });
         }
 
         return (
@@ -96,6 +128,13 @@ class Reviews extends Component {
                         <p>{review.date.toString()}</p>
                     </div>
                 ))}
+
+                {renderPageNumbers && renderPageNumbers.length>0 && (
+                    <ul id="page-numbers">
+                        {renderPageNumbers}
+                    </ul>
+                )}
+
             </div>
         )
     }
