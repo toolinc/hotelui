@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import escapeRegExp from 'escape-string-regexp'
 import TextField from 'material-ui/TextField';
 import PaperSheet from './PaperSheet'
+import MyFancyComponent from './MyMapComponent'
 
 class Hotels extends Component {
 
@@ -36,6 +37,12 @@ class Hotels extends Component {
         this.setState({query: ''})
     }
 
+    onMarkerClick(){
+        console.log("Click Marker")
+    }
+
+
+
 
     render() {
         const {hotels} = this.props;
@@ -67,7 +74,7 @@ class Hotels extends Component {
                 {showingHotels && showingHotels.length > 0 && showingHotels.map((hotel) => (
                     <PaperSheet key={hotel.hotelId} hotel={hotel}/>
                 ))}
-
+                <MyFancyComponent onMarkerClick={this.onMarkerClick} hotels={showingHotels}/>
             </div>
 
         )
