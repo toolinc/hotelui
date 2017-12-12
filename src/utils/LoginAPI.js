@@ -1,5 +1,5 @@
-const api = "http://localhost:7050"
-
+// const api = "http://localhost:7050"
+const api = "https://hotelbackend.appspot.com"
 
 
 export const login = (data) =>

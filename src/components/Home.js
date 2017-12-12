@@ -51,18 +51,10 @@ class Home extends Component {
                         </span>
                     <span>
                         <Chip
-                            avatar={<Avatar className={styles.orangeAvatar}>E</Avatar>}
-                            label="Emeryville"
+                            avatar={<Avatar className={styles.orangeAvatar}>B</Avatar>}
+                            label="Burlingame"
                             style={{'display': 'inline-flex', 'marginLeft': '10px'}}
-                            onClick={function() {window.location = '/hotels?id=' + "Emeryville"}}
-                        />
-                        </span>
-                    <span>
-                        <Chip
-                            avatar={<Avatar>B</Avatar>}
-                            label="Berkeley"
-                            style={{'display': 'inline-flex', 'marginLeft': '10px'}}
-                            onClick={function() {window.location = '/hotels?id=' + "Berkeley"}}
+                            onClick={function() {window.location = '/hotels?id=' + "Burlingame"}}
                         />
                         </span>
                 </div>

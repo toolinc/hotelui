@@ -16,9 +16,9 @@ const MyMapComponent = compose(
         defaultZoom={10}
         defaultCenter={{ lat: 37.78616, lng: -122.41018 }}
     >
-        {props.hotels.map((hotel) =>
+        {(props.hotels && (props.hotels.map((hotel) =>
             <Marker key={hotel.hotelId} position={{ lat: parseFloat(hotel.lat), lng: parseFloat(hotel.lng) }} onClick={props.onMarkerClick.bind(this)} />
-        )}
+        )))}
     </GoogleMap>
 ))
 

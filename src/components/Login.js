@@ -29,7 +29,6 @@ class Login extends Component {
                         </div>
                     </form>
                 </div>
-                <Link className='close-create-contact' to='/'>Close</Link>
                 <a className='link tiny-link' href='/'>Continue without signing in</a>
                 <div id='footer'>
                     Made by Jovani Rico
