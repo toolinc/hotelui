@@ -25,6 +25,12 @@ p#tagline {
     margin: 12px 0px 0px 0px;
 }
 
+#tagname {
+    color: #f08080;
+    margin: 30px 0px 0px 0px;
+    font-size: 1.2em;
+}
+
 #signin {
     background-color: #f08080; /* Coral */
     /*background-color: #66b2b2; !* Teal *!*/

@@ -2,14 +2,12 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 import hotels from './HotelReducer'
-import reviews from './ReviewsReducer'
-import attractions from './AttractionsReducer'
+import user from './LoginReducer'
 
 const rootReducer = combineReducers({
     router: routerReducer,
+    user: user,
     hotels: hotels,
-    reviews: reviews,
-    attractions: attractions,
 })
   
 export default rootReducer
